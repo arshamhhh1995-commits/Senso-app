@@ -16,7 +16,7 @@ class SensoManagerApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: sensoTheme(),
-      home: const LoginPage(
+      home:  LoginPage(
   requiredRole: 'manager',
   destination: ManagerHome(),
   appTitle: 'ورود مدیر سنسو',
