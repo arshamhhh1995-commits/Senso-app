@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'theme.dart';
+import 'supabase_config.dart';
 
-void main() => runApp(const SensoCashierApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SensoSupabase.initialize();
+  runApp(const SensoCashierApp());
+}
 
 class SensoCashierApp extends StatelessWidget {
   const SensoCashierApp({super.key});
