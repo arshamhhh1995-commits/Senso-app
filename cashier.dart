@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'theme.dart';
-
+import 'login_page.dart';
 void main() => runApp(const SensoCashierApp());
 
 class SensoCashierApp extends StatelessWidget {
   const SensoCashierApp({super.key});
   @override Widget build(BuildContext context) => MaterialApp(
     debugShowCheckedModeBanner: false, theme: sensoTheme(),
-    home: const CashierHome(),
+    home: const LoginPage(
+  requiredRole: 'cashier',
+  destination: CashierHome(),
+  appTitle: 'ورود صندوق‌دار سنسو',
+),
   );
 }
 
