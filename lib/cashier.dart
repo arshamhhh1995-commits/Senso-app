@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'theme.dart';
 import 'supabase_config.dart';
-
+import 'login_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SensoSupabase.initialize();
