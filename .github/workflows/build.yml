@@ -4,7 +4,6 @@ on: [push, workflow_dispatch]
 
 jobs:
   build:
-    name: Build Android APKs
     runs-on: ubuntu-latest
 
     steps:
@@ -22,20 +21,25 @@ jobs:
         with:
           channel: stable
 
-      - name: Setup Android project
+      - name: Create Android project
         run: flutter create --platforms=android --project-name senso_apps .
 
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Build Manager
-        run: flutter build apk --release -t lib/manager.dart
+      - name: Build Manager APK
+        run: |
+          flutter build apk --release -t lib/manager.dart
+          mkdir -p artifacts
+          cp build/app/outputs/flutter-apk/app-release.apk artifacts/SENSO_Manager.apk
 
-      - name: Build Cashier
-        run: flutter build apk --release -t lib/cashier.dart
+      - name: Build Cashier APK
+        run: |
+          flutter build apk --release -t lib/cashier.dart
+          cp build/app/outputs/flutter-apk/app-release.apk artifacts/SENSO_Cashier.apk
 
-      - name: Upload Manager APK
+      - name: Upload APK files
         uses: actions/upload-artifact@v4
         with:
-          name: SENSO-Manager
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: SENSO-APK-Files
+          path: artifacts/*.apk
