@@ -16,7 +16,11 @@ class SensoCashierApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: sensoTheme(),
-      home: const CashierHome(),
+      home: LoginPage(
+  requiredRole: 'cashier',
+  destination: const CashierHome(),
+  appTitle: 'ورود صندوق‌دار سنسو',
+),
     );
   }
 }
