@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'theme.dart';
 import 'supabase_config.dart';
-
+import 'login_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SensoSupabase.initialize();
@@ -16,7 +16,11 @@ class SensoManagerApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: sensoTheme(),
-      home: const ManagerHome(),
+      home: const LoginPage(
+  requiredRole: 'manager',
+  destination: ManagerHome(),
+  appTitle: 'ورود مدیر سنسو',
+),
     );
   }
 }
